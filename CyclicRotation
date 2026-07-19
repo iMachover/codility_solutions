@@ -1,0 +1,14 @@
+# not optimized version of CyclicRotation
+
+def solution(A, K):
+    N = len(A)
+
+    if not A:
+        return A
+    for i in range(K):
+        last = A[-1]
+        for j in range(N - 1, 0, -1):
+            A[j] = A[j-1]
+        A[0] = last
+    
+    return A

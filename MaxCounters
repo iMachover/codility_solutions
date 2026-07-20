@@ -1,0 +1,18 @@
+def solution(N, A):
+    counters = {}
+    current_max = 0
+    last_max_update = 0
+
+    for op in A:
+        if 1 <= op <= N:
+            if op not in counters:
+                counters[op] = last_max_update
+
+            counters[op] += 1
+
+            current_max = max(current_max, counters[op])
+        
+        elif op == N + 1:
+            counters.clear()
+            last_max_update = current_max
+    return [counters.get(i, last_max_update) for i in range(1, N + 1)]
